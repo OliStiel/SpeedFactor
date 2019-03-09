@@ -1,5 +1,4 @@
-import numpy as np
-from pandas import DataFrame
+from numpy import random
 
 
 class MonsterGroup(object):
@@ -19,7 +18,7 @@ class RoundOfCombat(object):
 
         for monster in self.monster_list:
             monster.roll_initiative()
-            print('{0}: {1}\n'.format(monster.name, monster.initiative))
+            print('{0}: {1}'.format(monster.name, monster.initiative))
 
 
 class Monster(object):
@@ -51,7 +50,7 @@ class Monster(object):
 
     @staticmethod
     def contend_tie():
-        return round(np.random.uniform(1, 20))
+        return round(random.uniform(1, 20))
 
     def roll_initiative(self):
-        self.initiative_roll = round(np.random.uniform(1, 12))
+        self.initiative_roll = round(random.uniform(1, 12))
