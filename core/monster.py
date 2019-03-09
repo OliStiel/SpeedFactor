@@ -1,15 +1,31 @@
 import numpy as np
+from pandas import DataFrame
+
+
+class MonsterGroup(object):
+
+    def __init__(self, monster_list):
+        self.monster_list = monster_list
 
 
 class RoundOfCombat(object):
 
     def __init__(self, monster_list):
         self.monster_list = monster_list
+        self.round_num = 0
+
+    def start_next_round(self):
+        self.round_num += 1
+
+        for monster in self.monster_list:
+            monster.roll_initiative()
+            print('{0}: {1}\n'.format(monster.name, monster.initiative))
 
 
 class Monster(object):
 
-    def __init__(self, dexterity_mod, size):
+    def __init__(self, name, dexterity_mod, size):
+        self.name = name
         self.dex_mod = dexterity_mod
         self.initiative_roll = None
         self._speed_factor_sizes = {
