@@ -45,10 +45,13 @@ class Monster(object):
     def dexterity_mod(self, modifier):
         self.dex_mod = modifier
 
-    def roll_initiative(self):
-        self.initiative_roll = round(np.random.uniform(1, 12))
-
     @property
     def initiative(self):
         return self.initiative_roll + self.dexterity_mod + self.size_mod
 
+    @staticmethod
+    def contend_tie():
+        return round(np.random.uniform(1, 20))
+
+    def roll_initiative(self):
+        self.initiative_roll = round(np.random.uniform(1, 12))
