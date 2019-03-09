@@ -1,26 +1,6 @@
 from numpy import random
 
 
-class MonsterGroup(object):
-
-    def __init__(self, monster_list):
-        self.monster_list = monster_list
-
-
-class RoundOfCombat(object):
-
-    def __init__(self, monster_list):
-        self.monster_list = monster_list
-        self.round_num = 0
-
-    def start_next_round(self):
-        self.round_num += 1
-
-        for monster in self.monster_list:
-            monster.roll_initiative()
-            print('{0}: {1}'.format(monster.name, monster.initiative))
-
-
 class Monster(object):
 
     def __init__(self, name, dexterity_mod, size):
@@ -53,4 +33,4 @@ class Monster(object):
         return round(random.uniform(1, 20))
 
     def roll_initiative(self):
-        self.initiative_roll = round(random.uniform(1, 12))
+        self.initiative_roll = round(random.uniform(1, 2))
